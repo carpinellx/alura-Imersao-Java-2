@@ -1,4 +1,7 @@
+import java.io.File;
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -24,14 +27,35 @@ public class App {
         var parser = new JsonParser();
         List<Map<String, String>> ListaDeFilmes = parser.parse(body);
         
+        var diretorio = new File("Figurinhas/");
+        diretorio.mkdir();
 
         // Exibir e manipular os dados
 
+        var geradora = new GeradoraDeFigurinhas();
         for (Map<String,String> filme : ListaDeFilmes) {
 
-            System.out.println("\u001b[1;44m Titulo: \u001b[m" + "\u001b[1;4;44m" + filme.get("fullTitle") + "\u001b[m");
+            String urlImagem = filme.get("image");
+            String UrlImagemMaior = urlImagem.replaceFirst("(@?\\.)([0-9A-Z,_]+).jpg$", "$1.jpg");
+            
+            String fulltitle = filme.get("fullTitle");
 
-            System.out.println("\u001b[1;42m Url do Poster: \u001b[m" + "\u001b[1;4;42m" + filme.get("image") + "\u001b[m");
+            double catalogacao = Double.parseDouble(filme.get("imDbRating"));
+
+            String textoFigurinha;
+            if (catalogacao >= 9.0) {
+                textoFigurinha = "Esse é Mídia";
+            
+            } else {
+                textoFigurinha = "< CSA x Ipatinga";
+            }
+
+            InputStream inputStream = new URL(UrlImagemMaior).openStream();
+            String nomeArquivo = "Figurinhas/" + fulltitle.replaceAll(":", "") + ".png";
+
+            geradora.cria(inputStream, nomeArquivo, textoFigurinha );
+
+            System.out.println("\u001b[1;44m Titulo: \u001b[m" + "\u001b[1;4;44m" + filme.get("fullTitle") + "\u001b[m");
 
             System.out.println("\u001b[1;41m Nota IMDb: \u001b[m" +"\u001b[1;4;41m " + filme.get("imDbRating") + " \u001b[m");
 

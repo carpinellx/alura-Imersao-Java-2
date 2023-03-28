@@ -5,7 +5,10 @@
         "lib/**/*.jar"
     ],
     "cSpell.words": [
+        "catalogacao",
         "classificacao",
-        "endereco"
+        "diretorio",
+        "endereco",
+        "fulltitle"
     ]
 }

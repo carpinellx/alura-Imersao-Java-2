@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
@@ -43,28 +44,27 @@ public class App {
             double catalogacao = Double.parseDouble(filme.get("imDbRating"));
 
             String textoFigurinha;
-            if (catalogacao >= 9.0) {
+            InputStream ImagemSelo;
+            if (catalogacao >= 8.9) {
                 textoFigurinha = "Esse é Mídia";
-            
+                ImagemSelo = new FileInputStream(new File("alura-Stickers/selos/aprovado.png"));
             } else {
                 textoFigurinha = "< CSA x Ipatinga";
+                ImagemSelo = new FileInputStream(new File("alura-Stickers/selos/reprovado.png"));
             }
 
             InputStream inputStream = new URL(UrlImagemMaior).openStream();
             String nomeArquivo = "Figurinhas/" + fulltitle.replaceAll(":", "") + ".png";
 
-            geradora.cria(inputStream, nomeArquivo, textoFigurinha );
+            geradora.cria(inputStream, nomeArquivo, textoFigurinha, ImagemSelo );
 
             System.out.println("\u001b[1;44m Titulo: \u001b[m" + "\u001b[1;4;44m" + filme.get("fullTitle") + "\u001b[m");
-
             System.out.println("\u001b[1;41m Nota IMDb: \u001b[m" +"\u001b[1;4;41m " + filme.get("imDbRating") + " \u001b[m");
-
             double classificacao = Double.parseDouble(filme.get("imDbRating"));
             int numeroEstrelas = (int) classificacao;
             for (int n = 1; n <= numeroEstrelas ; n++) {
                 System.out.print("⭐️");
             }
-
 
             System.out.println("\n");
         }

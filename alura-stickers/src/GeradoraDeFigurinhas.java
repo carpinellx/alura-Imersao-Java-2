@@ -12,13 +12,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+
 import javax.imageio.ImageIO;
 
 
 public class GeradoraDeFigurinhas {
     
 
-    public void cria(InputStream inputStream, String nomeArquivo, String texto) throws IOException {
+    public void cria(InputStream inputStream, String nomeArquivo, String texto, InputStream InputStreamSobreposicao) throws IOException {
 
         // leitura da imagem 
         // InputStream inputStream = new FileInputStream(new File("alura-Stickers/Entrada/filme.jpg"));
@@ -38,6 +39,10 @@ public class GeradoraDeFigurinhas {
         Graphics2D graphics = (Graphics2D) NovaImagem.getGraphics();
         graphics.drawImage(ImagemOriginal, 0, 0, null );
 
+        BufferedImage ImagemSobreposicao = ImageIO.read(InputStreamSobreposicao);
+        int imageSeloY = NovaAltura - ImagemSobreposicao.getHeight();
+        graphics.drawImage(ImagemSobreposicao, 0, imageSeloY, null );
+
         // configurar a fonte
 
         var fonte = new Font("Impact", Font.BOLD, 100);
@@ -50,8 +55,10 @@ public class GeradoraDeFigurinhas {
         FontMetrics fontMetrics = graphics.getFontMetrics();
         Rectangle2D retangulo = fontMetrics.getStringBounds(texto, graphics);
         int larguraTexto = (int) retangulo.getWidth();
+
         int posicaoTextoX = (largura - larguraTexto) / 2;
         int posicaoTextoY = (NovaAltura - 100);
+
         graphics.drawString(texto, posicaoTextoX , NovaAltura - 100);
 
 

@@ -46,7 +46,7 @@ public class GeradoraDeFigurinhas {
         // configurar a fonte
 
         var fonte = new Font("Impact", Font.BOLD, 100);
-        graphics.setColor(Color.RED);
+        graphics.setColor(Color.BLACK);
         graphics.setFont(fonte);
 
         // escrever uma frase na nova imagem 

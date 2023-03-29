@@ -46,11 +46,11 @@ public class App {
             String textoFigurinha;
             InputStream ImagemSelo;
             if (catalogacao >= 8.9) {
-                textoFigurinha = "Esse é Mídia";
-                ImagemSelo = new FileInputStream(new File("alura-Stickers/selos/aprovado.png"));
+                textoFigurinha = "Mídia";
+                ImagemSelo = new FileInputStream(new File("selos/aprovado.png"));
             } else {
-                textoFigurinha = "< CSA x Ipatinga";
-                ImagemSelo = new FileInputStream(new File("alura-Stickers/selos/reprovado.png"));
+                textoFigurinha = "Fraco";
+                ImagemSelo = new FileInputStream(new File("selos/reprovado.png"));
             }
 
             InputStream inputStream = new URL(UrlImagemMaior).openStream();

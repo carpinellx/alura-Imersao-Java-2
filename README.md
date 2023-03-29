@@ -17,13 +17,13 @@ Utilizando Java no VS Code para acessar e consumir API do IMDB/alura (Top 10 Fil
 
 2 - Configurando a estética da apresentação das informações.
 
-          System.out.println("\u001b[1;44m Titulo: \u001b[m" + "\u001b[1;4;44m" + filme.get("fullTitle") + "\u001b[m");
-          System.out.println("\u001b[1;41m Nota IMDb: \u001b[m" +"\u001b[1;4;41m " + filme.get("imDbRating") + " \u001b[m");
-          double classificacao = Double.parseDouble(filme.get("imDbRating"));
-          int numeroEstrelas = (int) classificacao;
-          for (int n = 1; n <= numeroEstrelas ; n++) {
-              System.out.print("⭐️");
-          }
+    System.out.println("\u001b[1;44m Titulo: \u001b[m" + "\u001b[1;4;44m" + filme.get("fullTitle") + "\u001b[m");
+    System.out.println("\u001b[1;41m Nota IMDb: \u001b[m" +"\u001b[1;4;41m " + filme.get("imDbRating") + " \u001b[m");
+    double classificacao = Double.parseDouble(filme.get("imDbRating"));
+    int numeroEstrelas = (int) classificacao;
+    for (int n = 1; n <= numeroEstrelas ; n++) {
+       System.out.print("⭐️");
+    }
 
           System.out.println("\n");
 
@@ -31,9 +31,12 @@ Utilizando Java no VS Code para acessar e consumir API do IMDB/alura (Top 10 Fil
 3 - Utilizar a variavel de ambiente para esconder chave de acesso.
 
     No PowerShell:
-    $env:IMDB_KEY = "chave"                                         
+    $env:IMDB_KEY = "Minha chave"                                         
 
     String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/MostPopularMovies/" + IMBD_KEY;  
+
+## Resutado:
+
 
 
 ## Aula 2 - GERANDO FIGURINHAS PARA WHATSAPP | 28/03/2023
@@ -44,83 +47,80 @@ Utilizando Java no VS Code para acessar e consumir API do IMDB/alura (Top 10 Fil
 
 1 - Criar diretório de saída das imagens, se ainda não existir.
 
-        var diretorio = new File("Figurinhas/");
-        diretorio.mkdir();                                 
+    var diretorio = new File("Figurinhas/");
+    diretorio.mkdir();                                 
 
 
 2 - Centralizando o texto na nova imagem.
 
-        String texto = "Mídia";
-        FontMetrics fontMetrics = graphics.getFontMetrics();
-        Rectangle2D retangulo = fontMetrics.getStringBounds(texto, graphics);
-        int larguraTexto = (int) retangulo.getWidth();
+    String texto = "Mídia";
+    FontMetrics fontMetrics = graphics.getFontMetrics();
+    Rectangle2D retangulo = fontMetrics.getStringBounds(texto, graphics);
+    int larguraTexto = (int) retangulo.getWidth();
+    
+    int posicaoTextoX = (largura - larguraTexto) / 2;
+    int posicaoTextoY = (NovaAltura - 100);
 
-        int posicaoTextoX = (largura - larguraTexto) / 2;
-        int posicaoTextoY = (NovaAltura - 100);
-
-        graphics.drawString(texto, posicaoTextoX , NovaAltura - 100);
+    graphics.drawString(texto, posicaoTextoX , NovaAltura - 100);
 
 
 3 - Colocar outra fonte como a Comic Sans ou a Impact, a fonte usada em memes.
 
-        var fonte = new Font("Impact", Font.BOLD, 100);
+    var fonte = new Font("Impact", Font.BOLD, 100);
 
 
 4 - Colocar contorno (outline) no texto da imagem.
 
 
-        FontRenderContext  fontRenderContext = graphics.getFontRenderContext();
-        var textLayout = new TextLayout(texto, fonte, fontRenderContext);
+    FontRenderContext  fontRenderContext = graphics.getFontRenderContext();
+    var textLayout = new TextLayout(texto, fonte, fontRenderContext);
 
+    Shape outline = textLayout.getOutline(null);
+    AffineTransform transform = graphics.getTransform();
+    transform.translate(posicaoTextoX, posicaoTextoY);
+    graphics.setTransform(transform);
+    
+    var outlineStroke = new BasicStroke(largura * 0.004f);
+    graphics.setStroke(outlineStroke);
 
-        Shape outline = textLayout.getOutline(null);
-        AffineTransform transform = graphics.getTransform();
-        transform.translate(posicaoTextoX, posicaoTextoY);
-        graphics.setTransform(transform);
-
-
-        var outlineStroke = new BasicStroke(largura * 0.004f);
-        graphics.setStroke(outlineStroke);
-
-
-        graphics.setColor(Color.WHITE);
-        graphics.draw(outline);
-        graphics.setClip(outline);
-
+    graphics.setColor(Color.WHITE);
+    graphics.draw(outline);
+    graphics.setClip(outline);
+        
+        
 5 - Modificando texto de acordo com o Rating.
 
-        if (catalogacao >= 9.0) {
-            textoFigurinha = "Esse é Mídia";
+    if (catalogacao >= 9.0) {
+        textoFigurinha = "Esse é Mídia";
             
-        } else {
-            textoFigurinha = "< CSA x Ipatinga";
-        }
+    } else {
+        textoFigurinha = "< CSA x Ipatinga";
+    }
 
 
-        String nomeArquivo = "Figurinhas/" + fulltitle.replaceAll(":", "") + ".png";
+    String nomeArquivo = "Figurinhas/" + fulltitle.replaceAll(":", "") + ".png";
 
 
-        public void cria(InputStream inputStream, String nomeArquivo, String texto, InputStream InputStreamSobreposicao) throws IOException {
+    public void cria(InputStream inputStream, String nomeArquivo, String texto, InputStream InputStreamSobreposicao) throws IOException {
       
-        if (catalogacao >= 8.9) {
-            textoFigurinha = "Esse é Mídia";
-            ImagemSelo = new FileInputStream(new File("alura-Stickers/selos/aprovado.png"));
-        } else {
-            textoFigurinha = "< CSA x Ipatinga";
-            ImagemSelo = new FileInputStream(new File("alura-Stickers/selos/reprovado.png"));
-        }
-        }
+    if (catalogacao >= 8.9) {
+        textoFigurinha = "Mídia";
+        ImagemSelo = new FileInputStream(new File("selos/aprovado.png"));
+    } else {
+        textoFigurinha = "Fraco";
+        ImagemSelo = new FileInputStream(new File("selos/reprovado.png"));
+    }
 
 
-        Graphics2D graphics = (Graphics2D) NovaImagem.getGraphics();
-        graphics.drawImage(ImagemOriginal, 0, 0, null );
+    Graphics2D graphics = (Graphics2D) NovaImagem.getGraphics();
+    graphics.drawImage(ImagemOriginal, 0, 0, null );
         
-        BufferedImage ImagemSobreposicao = ImageIO.read(InputStreamSobreposicao);
-        int imageSeloY = NovaAltura - ImagemSobreposicao.getHeight();
+    BufferedImage ImagemSobreposicao = ImageIO.read(InputStreamSobreposicao);
+    int imageSeloY = NovaAltura - ImagemSobreposicao.getHeight();
 
-        graphics.drawImage(ImagemSobreposicao, 0, imageSeloY, null );
+    graphics.drawImage(ImagemSobreposicao, 0, imageSeloY, null );
 
-
+## Resultados
 
 ## Aula 3 | 29/03/2023
 

@@ -4,9 +4,9 @@
 
 Utilizando Java no VS Code para acessar e consumir API do IMDB/alura (Top 10 Filmes).
 
-[App](https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/alura-stickers/src/App.java) - Aplicação principal, acessando e exibindo os dados da API.
+[App](https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/src/App.java) - Aplicação principal, acessando e exibindo os dados da API.
 
-[Parser](https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/alura-stickers/src/JsonParser.java) - Classe para "parsear", filtrando as informações do arquivo Json
+[Parser](https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/src/JsonParser.java) - Classe para "parsear", filtrando as informações do arquivo Json
 
 ### Desafios Aula 1 | 27/03/2023
 
@@ -38,7 +38,7 @@ Utilizando Java no VS Code para acessar e consumir API do IMDB/alura (Top 10 Fil
 
 ## Aula 2 - GERANDO FIGURINHAS PARA WHATSAPP | 28/03/2023
 
-[Gerador de Stickers](https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/alura-stickers/src/GeradoraDeFigurinhas.java) - Classe geradora de figurinhas para WhatsApp.
+[Gerador de Stickers](https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/src/GeradoraDeFigurinhas.java) - Classe geradora de figurinhas para WhatsApp.
 
 ### Desafios Aula 2
 

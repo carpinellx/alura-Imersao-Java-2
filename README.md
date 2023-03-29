@@ -103,7 +103,8 @@ Utilizando Java no VS Code para acessar e consumir API do IMDB/alura (Top 10 Fil
     String nomeArquivo = "Figurinhas/" + fulltitle.replaceAll(":", "") + ".png";
 
 
-    public void cria(InputStream inputStream, String nomeArquivo, String texto, InputStream InputStreamSobreposicao) throws IOException {
+    public void cria(InputStream inputStream, String nomeArquivo, String texto, InputStream InputStreamSobreposicao) 
+    throws IOException {
       
     if (catalogacao >= 8.9) {
         textoFigurinha = "Mídia";

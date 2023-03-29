@@ -12,7 +12,7 @@ Utilizando Java no VS Code para acessar e consumir API do IMDB (Top 10 Filmes).
 
 1 - Utilizando End-Point para acessar as top séries do site.
 
-    String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopTVs.json";
+    String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
 
 2 - Configurando a estética da apresentação das informações.
 

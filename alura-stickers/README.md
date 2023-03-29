@@ -120,3 +120,10 @@ Utilizando Java no VS Code para acessar e consumir API do IMDB/alura (Top 10 Fil
 
         graphics.drawImage(ImagemSobreposicao, 0, imageSeloY, null );
 
+
+
+## Aula 3 | 29/03/2023
+
+## Aula 4 | 30/03/2023
+
+## Aula 5 | 31/03/2023

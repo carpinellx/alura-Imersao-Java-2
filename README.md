@@ -36,7 +36,9 @@ Utilizando Java no VS Code para acessar e consumir API do IMDB/alura (Top 10 Fil
     String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/MostPopularMovies/" + IMBD_KEY;  
 
 ## Resutado:
-
+<p align="center">
+  <img src="https://raw.githubusercontent.com/carpinellx/alura-Imersao-Java-2/main/Desafios/Aula1-Desafio/Aula1-Desafio.PNG" width="500" height="250"/>
+</p>
 
 
 ## Aula 2 - GERANDO FIGURINHAS PARA WHATSAPP | 28/03/2023
@@ -121,6 +123,12 @@ Utilizando Java no VS Code para acessar e consumir API do IMDB/alura (Top 10 Fil
     graphics.drawImage(ImagemSobreposicao, 0, imageSeloY, null );
 
 ## Resultados
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/carpinellx/alura-Imersao-Java-2/main/Desafios/Aula2-Desafios/PulpFiction(1994).png" width="500" height="450"/>
+  <img src="https://raw.githubusercontent.com/carpinellx/alura-Imersao-Java-2/main/Desafios/Aula2-Desafios/TheLordOfTheRings(2001).png" width="500" height="450"/>
+</p>
+
 
 ## Aula 3 | 29/03/2023
 

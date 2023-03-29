@@ -1,5 +1,4 @@
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
@@ -16,6 +15,7 @@ public class App {
         // Fazer uma conexão HTTP e buscar os top 250 filmes
 
         String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
+        
         URI endereco = URI.create(url);
         var client = HttpClient.newHttpClient();
         var request = HttpRequest.newBuilder(endereco).GET().build();
@@ -37,36 +37,17 @@ public class App {
         for (Map<String,String> filme : ListaDeFilmes) {
 
             String urlImagem = filme.get("image");
-            String UrlImagemMaior = urlImagem.replaceFirst("(@?\\.)([0-9A-Z,_]+).jpg$", "$1.jpg");
-            
             String fulltitle = filme.get("fullTitle");
 
-            double catalogacao = Double.parseDouble(filme.get("imDbRating"));
 
-            String textoFigurinha;
-            InputStream ImagemSelo;
-            if (catalogacao >= 8.9) {
-                textoFigurinha = "Mídia";
-                ImagemSelo = new FileInputStream(new File("selos/aprovado.png"));
-            } else {
-                textoFigurinha = "Fraco";
-                ImagemSelo = new FileInputStream(new File("selos/reprovado.png"));
-            }
-
-            InputStream inputStream = new URL(UrlImagemMaior).openStream();
+            InputStream inputStream = new URL(urlImagem).openStream();
             String nomeArquivo = "Figurinhas/" + fulltitle.replaceAll(":", "") + ".png";
 
-            geradora.cria(inputStream, nomeArquivo, textoFigurinha, ImagemSelo );
+            geradora.cria(inputStream, nomeArquivo);
 
-            System.out.println("\u001b[1;44m Titulo: \u001b[m" + "\u001b[1;4;44m" + filme.get("fullTitle") + "\u001b[m");
-            System.out.println("\u001b[1;41m Nota IMDb: \u001b[m" +"\u001b[1;4;41m " + filme.get("imDbRating") + " \u001b[m");
-            double classificacao = Double.parseDouble(filme.get("imDbRating"));
-            int numeroEstrelas = (int) classificacao;
-            for (int n = 1; n <= numeroEstrelas ; n++) {
-                System.out.print("⭐️");
-            }
+            System.out.println("\u001b[1;31m Titulo: \u001b[m" + filme.get("fullTitle"));
 
-            System.out.println("\n");
+            System.out.println();
         }
 
     }

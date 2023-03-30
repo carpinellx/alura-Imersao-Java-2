@@ -133,6 +133,20 @@ Utilizando Java no VS Code para acessar e consumir API do IMDB/alura (Top 10 Fil
 
 ## Aula 3 | 29/03/2023
 
+Refatoração do [App](https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/src/App.java), em classes.
+
+Criando classes para:
+
+- [Conteudo](https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/src/conteudo.java)
+
+- [ClienteHttp](https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/src/ClienteHTTP.java)
+
+Criando uma [interface](https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/src/ExtratorDeConteudo.java) para as novas classes extratoras:
+
+- [ExtratorConteudoIMDB](https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/src/ExtratorDeConteudoDoIMDb.java)
+
+- [ExtratorConteudoNasa](https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/src/ExtratorDeConteudoDaNasa.java)
+
 ## Aula 4 | 30/03/2023
 
 ## Aula 5 | 31/03/2023

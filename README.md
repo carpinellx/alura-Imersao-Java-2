@@ -1,4 +1,4 @@
-# Imersão Java 2 
+# Imersão Java 2 | 27/03/2023
 
 ## Aula 1 - CONSUMINDO UMA API DE FILMES COM JAVA
 
@@ -8,7 +8,7 @@ Utilizando Java no VS Code para acessar e consumir API do IMDB/alura (Top 10 Fil
 
 [Parser](https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/src/JsonParser.java) - Classe para "parsear", filtrando as informações do arquivo Json
 
-### Desafios Aula 1 | 27/03/2023
+### Desafios Aula 1
 
 1 - Consumir o endpoint de filmes mais populares da API do IMDB.
 
@@ -123,6 +123,7 @@ Utilizando Java no VS Code para acessar e consumir API do IMDB/alura (Top 10 Fil
 
     graphics.drawImage(ImagemSobreposicao, 0, imageSeloY, null );
 
+
 ## Resultados
 
 <p align="center">
@@ -146,6 +147,72 @@ Criando uma [interface](https://github.com/carpinellx/alura-Imersao-Java-2/blob/
 - [ExtratorConteudoIMDB](https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/src/ExtratorDeConteudoDoIMDb.java)
 
 - [ExtratorConteudoNasa](https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/src/ExtratorDeConteudoDaNasa.java)
+
+### Desafios Aula 3
+
+
+1 - Transformar a classe que representa os conteúdos em um Record.
+
+    public record Conteudo(String titulo, String urlImagem){}
+    
+    
+2 - Criar as suas próprias exceções e usá-las na classe que implementa o [ClienteHttpException](https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/src/ClienteHttpException.java).
+
+
+    public class ClienteHttpException  extends RuntimeException {
+
+        public ClienteHttpException(String message) {
+        super(message);
+        }
+
+    }
+
+Alteração do [ClienteHttp](https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/src/ClienteHTTP.java).
+
+
+    catch (IOException | InterruptedException ex) {
+        throw new ClienteHttpException("Erro ao consultar a URL.");
+
+    }
+
+
+3 - Mapear uma lista em uma outra.
+ 
+ 
+    return ListaDeAtributos.stream()
+    .map(atributos -> new conteudo(atributos.get("title"), atributos.get("url")))
+    .toList();
+ 
+
+4 - Criar uma Enum que une, como configurações, a URL da [API](https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/src/API.java) e o extrator utilizado
+
+    public enum API {
+    IMDB_TOP_MOVEIS("https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json",
+    new ExtratorDeConteudoDoIMDb()),
+    IMDB_MOST_POPULAR_TVS("https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/MostPopularTVs.json",
+    new ExtratorDeConteudoDoIMDb()),
+    NASA("https://api.nasa.gov/planetary/apod?api_key=76hhyMbykQvFKN9SiygrkdHf56LZgg6zDo8HZaay&start_date=2022-06-12&end_date=2022-06-14",
+    new ExtratorDeConteudoDaNasa());
+    
+
+
+    private String url;
+    private ExtratorDeConteudo extrator;
+
+    API(String url, ExtratorDeConteudo extrator) {
+        this.url = url;
+        this.extrator = extrator;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public ExtratorDeConteudo getExtrator() {
+        return extrator;
+    }
+
+}
 
 ## Aula 4 | 30/03/2023
 

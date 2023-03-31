@@ -13,6 +13,7 @@
         "conteudos",
         "diretorio",
         "endereco",
-        "fulltitle"
+        "fulltitle",
+        "IMDB"
     ]
 }

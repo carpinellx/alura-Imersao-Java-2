@@ -212,7 +212,14 @@ Alteração do [ClienteHttp](https://github.com/carpinellx/alura-Imersao-Java-2/
         return extrator;
     }
 
-}
+    }
+
+## Resultados
+<p align="center">
+  <img src="https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/Desafios/Aula3-Desafios/Find%20the%20Man%20in%20the%20Moon.png?raw=true).png" width="500" height="450"/>
+  <img src="https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/Desafios/Aula3-Desafios/The%20Boys%20(2019).png?raw=true" width="500" height="450"/>
+  <img src="https://github.com/carpinellx/alura-Imersao-Java-2/blob/main/Desafios/Aula3-Desafios/The%20Dark%20Knight%20(2008).png?raw=true" width="500" height="450"/>
+</p>
 
 ## Aula 4 | 30/03/2023
 
